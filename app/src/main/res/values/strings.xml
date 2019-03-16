@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">project_ltdd2_nhom5_v2</string>
+    <string-array name="nhom_giao_dich_arr">
+        <item>--Hãy chọn nhóm giao dịch--</item>
+        <item>Ăn uống</item>
+        <item>Di chuyển</item>
+        <item>Mua sắm</item>
+    </string-array>
+    <string-array name="nhom_khoan_thu_arr">
+        <item>--Hãy chọn nhóm khoản thu--</item>
+        <item>Thưởng</item>
+        <item>Tiền lãi</item>
+        <item>Giải thưởng</item>
+    </string-array>
+    <string-array name="wallet_arr">
+        <item>--Hãy chọn ví--</item>
+        <item>Ví tiền chính(900.000 VND)</item>
+    </string-array>
+
 </resources>
