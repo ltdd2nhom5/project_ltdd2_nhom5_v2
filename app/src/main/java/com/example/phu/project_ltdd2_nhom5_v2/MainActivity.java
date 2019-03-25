@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnThemKhoanThu, btnThemKhoanChi, btnThongKe;
+    Button btnThemKhoanThu, btnThemKhoanChi, btnThongKe,btnLapKeHoach;
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         btnThemKhoanChi = (Button)findViewById(R.id.btnThemKhoanChi);
         btnThemKhoanThu = (Button)findViewById(R.id.btnThemKhoanThu);
         btnThongKe = (Button)findViewById(R.id.btnThongKe);
+        btnLapKeHoach = (Button)findViewById(R.id.btnLapKeHoach);
 
         btnThemKhoanChi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = new Intent(MainActivity.this,SpendStatisticsActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnLapKeHoach.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(MainActivity.this,ListPercent.class);
                 startActivity(intent);
             }
         });

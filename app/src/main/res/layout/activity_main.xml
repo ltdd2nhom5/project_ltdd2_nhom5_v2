@@ -30,4 +30,9 @@
         android:text="Thông kê thu chi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btnLapKeHoach"
+        android:text="Lập kế hoạch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>
