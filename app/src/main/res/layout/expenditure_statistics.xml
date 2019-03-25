@@ -55,12 +55,12 @@
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
                     android:textStyle="bold"
-                    android:text="Tổng quan"/>
+                    android:text="Thêm giao dịch"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txtTQ"
-                    android:text="Chạm để xem báo cáo đầy đủ"/>
+                    android:text="Chạm để thêm  giao dịch"/>
             </RelativeLayout>
 
             <ImageView
@@ -84,7 +84,7 @@
                 android:id="@+id/txtInputMoney"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tiền vào"
+                android:text="Số dư đầu"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"/>
             <TextView
@@ -96,12 +96,27 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignBaseline="@id/txtInputMoney"/>
             <TextView
+                android:id="@+id/txtInputMoney1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiền vào"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/txtInputMoney"/>
+            <TextView
+                android:id="@+id/txtIntMoney1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1,000,000 đ"
+                android:textColor="@color/blue"
+                android:layout_alignParentRight="true"
+                android:layout_alignBaseline="@id/txtInputMoney1"/>
+            <TextView
                 android:id="@+id/txtOutputMoney"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tiền ra"
                 android:layout_marginTop="5dp"
-                android:layout_below="@id/txtInputMoney"/>
+                android:layout_below="@id/txtInputMoney1"/>
             <TextView
                 android:id="@+id/txtOutMoney"
                 android:layout_width="wrap_content"
