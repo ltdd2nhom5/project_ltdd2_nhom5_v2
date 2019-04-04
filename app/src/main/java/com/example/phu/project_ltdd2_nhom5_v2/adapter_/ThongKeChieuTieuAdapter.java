@@ -1,7 +1,6 @@
 package com.example.phu.project_ltdd2_nhom5_v2.adapter_;
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -12,16 +11,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.phu.project_ltdd2_nhom5_v2.R;
-import com.example.phu.project_ltdd2_nhom5_v2.model.ThongKeChiTieu;
+import com.example.phu.project_ltdd2_nhom5_v2.model.Chi;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class ThongKeChieuTieuAdapter extends ArrayAdapter<ThongKeChiTieu> {
+public class ThongKeChieuTieuAdapter extends ArrayAdapter<Chi> {
     private Activity context;
     private int layoutID;
-    private ArrayList<ThongKeChiTieu> listTKCT;
-    public ThongKeChieuTieuAdapter(@NonNull Activity context, int layoutID, @NonNull ArrayList<ThongKeChiTieu> listTKCT) {
+    private ArrayList<Chi> listTKCT;
+    public ThongKeChieuTieuAdapter(@NonNull Activity context, int layoutID, @NonNull ArrayList<Chi> listTKCT) {
         super(context, layoutID, listTKCT);
         this.context = context;
         this.layoutID = layoutID;
@@ -34,7 +32,7 @@ public class ThongKeChieuTieuAdapter extends ArrayAdapter<ThongKeChiTieu> {
         View view = null;
         LayoutInflater inflater = context.getLayoutInflater();
         view = inflater.inflate(layoutID, parent, false);
-        ThongKeChiTieu tkct = listTKCT.get(position);
+        Chi tkct = listTKCT.get(position);
 
 
         TextView txtName = (TextView) view.findViewById(R.id.lblName);

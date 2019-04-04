@@ -2,13 +2,13 @@ package com.example.phu.project_ltdd2_nhom5_v2.model;
 
 import java.util.Date;
 
-public class ThongKeChiTieu {
+public class Chi {
     private String nhom_chi_tieu;
     private String ghi_chu;
     private Date ngay_chi_tieu;
     private float so_tien_chi;
 
-    public ThongKeChiTieu(String nhom_chi_tieu, String ghi_chu, Date ngay_chi_tieu, float so_tien_chi) {
+    public Chi(String nhom_chi_tieu, String ghi_chu, Date ngay_chi_tieu, float so_tien_chi) {
         this.nhom_chi_tieu = nhom_chi_tieu;
         this.ghi_chu = ghi_chu;
         this.ngay_chi_tieu = ngay_chi_tieu;
