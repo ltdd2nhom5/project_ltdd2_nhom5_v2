@@ -42,9 +42,9 @@ public class SpendStatisticsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.expenditure_statistics);
 
-        btn1 = (Button) findViewById(R.id.btn1);
-        btn2 = (Button) findViewById(R.id.btn2);
-        btn3 = (Button) findViewById(R.id.btn3);
+//        btn1 = (Button) findViewById(R.id.btn1);
+//        btn2 = (Button) findViewById(R.id.btn2);
+//        btn3 = (Button) findViewById(R.id.btn3);
 
         CustomList adapter = new CustomList(SpendStatisticsActivity.this, name, imageId, money);
         list = (ListView) findViewById(R.id.listItem);
