@@ -6,35 +6,35 @@
     android:background="@color/grey"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/green">
-        <Button
-            android:id="@+id/btn1"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:textColor="@color/white"
-            android:text="1/2019"/>
-        <Button
-            android:id="@+id/btn2"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:textColor="@color/white"
-            android:text="THÁNG TRƯỚC"/>
-        <Button
-            android:id="@+id/btn3"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:textColor="@color/white"
-            android:text="THÁNG NÀY"/>
-    </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/green">-->
+        <!--<Button-->
+            <!--android:id="@+id/btn1"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@null"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:text="1/2019"/>-->
+        <!--<Button-->
+            <!--android:id="@+id/btn2"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@null"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:text="THÁNG TRƯỚC"/>-->
+        <!--<Button-->
+            <!--android:id="@+id/btn3"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@null"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:text="THÁNG NÀY"/>-->
+    <!--</LinearLayout>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
                 android:id="@+id/txtTotalMoney"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="800,000 đ"
+                android:text="1,800,000 đ"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:layout_alignParentRight="true"
@@ -153,45 +153,7 @@
         android:background="@color/white"
         android:layout_marginTop="25dp"
         android:padding="20dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="25dp"
-                android:text="25"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Thứ hai"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="tháng 2 2019"/>
-            </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:textStyle="bold"
-                android:text="800,000 đ" />
-        </LinearLayout>
-        <TextView
-            android:id="@+id/txtBorder2"
-            android:layout_width="match_parent"
-            android:layout_height="2.5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/my_border" />
         <ListView
             android:id="@+id/listItem"
             android:layout_width="match_parent"
