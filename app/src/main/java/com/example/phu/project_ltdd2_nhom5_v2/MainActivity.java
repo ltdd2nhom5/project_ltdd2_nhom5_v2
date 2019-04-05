@@ -16,8 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Database db = new Database(this);
-        db.insert_du_lieu_mau();
+
         btnThemKhoanChi = (Button)findViewById(R.id.btnThemKhoanChi);
         btnThemKhoanThu = (Button)findViewById(R.id.btnThemKhoanThu);
         btnThongKe = (Button)findViewById(R.id.btnThongKe);
@@ -41,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         btnThongKe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Database db = new Database(MainActivity.this);
+                db.insert_du_lieu_mau();
                 intent = new Intent(MainActivity.this,SpendStatisticsActivity.class);
                 startActivity(intent);
             }
