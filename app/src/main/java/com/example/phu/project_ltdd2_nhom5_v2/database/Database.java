@@ -94,7 +94,7 @@ public class Database extends SQLiteOpenHelper {
         chi_value.put("nhom_chi_tieu_id", "1");
         chi_value.put("img_nhom_chi_tieu", "1");
         chi_value.put("note", "note3");
-        chi_value.put("ngay_chi_tieu", "1900-1-09");
+        chi_value.put("ngay_chi_tieu", "2019-4-09");
         chi_value.put("so_tien_chi", "100000");
         db.insert("chi", null, chi_value);
 
@@ -108,63 +108,63 @@ public class Database extends SQLiteOpenHelper {
 //thu
         ContentValues thu_values = new ContentValues();
         thu_values.put("note", "note3");
-        thu_values.put("ngay_thu", "1900-2-09");
+        thu_values.put("ngay_thu", "2019-2-09");
         thu_values.put("so_tien_thu", "1100000");
         db.insert("thu", null, thu_values);
 
         thu_values.put("note", "note3");
-        thu_values.put("ngay_thu", "1900-3-09");
+        thu_values.put("ngay_thu", "2019-4-09");
         thu_values.put("so_tien_thu", "1000000");
         db.insert("thu", null, thu_values);
 
         thu_values.put("note", "note3");
-        thu_values.put("ngay_thu", "1900-2-09");
+        thu_values.put("ngay_thu", "2019-4-09");
         thu_values.put("so_tien_thu", "1200000");
         db.insert("thu", null, thu_values);
 
         thu_values.put("note", "note3");
-        thu_values.put("ngay_thu", "1900-2-09");
+        thu_values.put("ngay_thu", "2019-3-09");
         thu_values.put("so_tien_thu", "1300000");
         db.insert("thu", null, thu_values);
 
         thu_values.put("note", "note3");
-        thu_values.put("ngay_thu", "1900-3-09");
+        thu_values.put("ngay_thu", "2019-3-09");
         thu_values.put("so_tien_thu", "1400000");
         db.insert("thu", null, thu_values);
 
         thu_values.put("note", "note3");
-        thu_values.put("ngay_thu", "1900-3-09");
+        thu_values.put("ngay_thu", "2019-3-09");
         thu_values.put("so_tien_thu", "1500000");
         db.insert("thu", null, thu_values);
 
         thu_values.put("note", "note3");
-        thu_values.put("ngay_thu", "1900-3-09");
+        thu_values.put("ngay_thu", "2019-2-09");
         thu_values.put("so_tien_thu", "1500000");
         db.insert("thu", null, thu_values);
 //vi
         ContentValues vi_values = new ContentValues();
         vi_values.put("so_du", "1000000");
-        vi_values.put("thang_nam", "1900-1-09");
+        vi_values.put("thang_nam", "2019-1-09");
         db.insert("vi", null, vi_values);
 
         vi_values.put("so_du", "2000000");
-        vi_values.put("thang_nam", "1900-1-09");
+        vi_values.put("thang_nam", "2019-1-09");
         db.insert("vi", null, vi_values);
 
         vi_values.put("so_du", "2500000");
-        vi_values.put("thang_nam", "1900-2-09");
+        vi_values.put("thang_nam", "2019-2-09");
         db.insert("vi", null, vi_values);
 
         vi_values.put("so_du", "400000");
-        vi_values.put("thang_nam", "1900-2-09");
+        vi_values.put("thang_nam", "2019-2-09");
         db.insert("vi", null, vi_values);
 
         vi_values.put("so_du", "200000");
-        vi_values.put("thang_nam", "1900-2-09");
+        vi_values.put("thang_nam", "2019-2-09");
         db.insert("vi", null, vi_values);
 
         vi_values.put("so_du", "800000");
-        vi_values.put("thang_nam", "1900-3-09");
+        vi_values.put("thang_nam", "2019-3-09");
         db.insert("vi", null, vi_values);
         db.close();
     }

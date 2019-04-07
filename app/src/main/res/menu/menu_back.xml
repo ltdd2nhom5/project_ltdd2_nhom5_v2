@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/home"
+        android:title="Trang chủ"
+        app:showAsAction="collapseActionView"
+        android:orderInCategory="100"/>
+    <item android:id="@+id/add_transaction"
+        android:title="Thêm khoản chi"
+        app:showAsAction="collapseActionView"
+        android:orderInCategory="100"/>
+    <item android:id="@+id/add_thu"
+        android:title="Thêm khoản thu"
+        app:showAsAction="collapseActionView"
+        android:orderInCategory="100"/>
+</menu>
