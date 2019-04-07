@@ -93,7 +93,7 @@ public class SpendStatisticsActivity extends AppCompatActivity {
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         txtDateChoose.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
                     }
-                }, day, month, year);
+                }, year, month, day);
                 datePickerDialog.show();
             }
         });
@@ -197,10 +197,3 @@ public class SpendStatisticsActivity extends AppCompatActivity {
         });
     }
 }
-
-//        list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Toast.makeText(SpendStatisticsActivity.this, "You Clicked at " +name[+ position], Toast.LENGTH_SHORT).show();
-//            }
-//        });

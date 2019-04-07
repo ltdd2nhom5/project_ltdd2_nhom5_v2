@@ -15,6 +15,7 @@ public class NhomChiTieu {
         this.name = name;
         this.phan_tram = phan_tram;
         this.tien_tieu_con_lai = tien_tieu_con_lai;
+
     }
 
     public int getId() {
@@ -38,10 +39,8 @@ public class NhomChiTieu {
     }
 
     public void setName(String name) {
-
         this.name = name;
     }
-
     public void setPhan_tram(float phan_tram) {
         this.phan_tram = phan_tram;
     }

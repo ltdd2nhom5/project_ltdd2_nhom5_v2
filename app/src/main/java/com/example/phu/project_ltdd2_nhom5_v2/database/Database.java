@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.phu.project_ltdd2_nhom5_v2.R;
 import com.example.phu.project_ltdd2_nhom5_v2.model.Chi;
 import com.example.phu.project_ltdd2_nhom5_v2.model.NhomChiTieu;
 import com.example.phu.project_ltdd2_nhom5_v2.model.Thu;
@@ -57,35 +58,35 @@ public class Database extends SQLiteOpenHelper {
         chi_value.put("nhom_chi_tieu_id", "1");
         chi_value.put("img_nhom_chi_tieu", "1");
         chi_value.put("note", "note0");
-        chi_value.put("ngay_chi_tieu", "1900-2-09");
+        chi_value.put("ngay_chi_tieu", "2019-2-09");
         chi_value.put("so_tien_chi", "100000");
         db.insert("chi", null, chi_value);
 
         chi_value.put("nhom_chi_tieu_id", "2");
         chi_value.put("img_nhom_chi_tieu", "2");
         chi_value.put("note", "note1");
-        chi_value.put("ngay_chi_tieu", "1900-3-09");
+        chi_value.put("ngay_chi_tieu", "2019-3-09");
         chi_value.put("so_tien_chi", "100000");
         db.insert("chi", null, chi_value);
 
         chi_value.put("nhom_chi_tieu_id", "3");
         chi_value.put("img_nhom_chi_tieu", "3");
         chi_value.put("note", "note2");
-        chi_value.put("ngay_chi_tieu", "1900-4-09");
+        chi_value.put("ngay_chi_tieu", "2019-4-09");
         chi_value.put("so_tien_chi", "100000");
         db.insert("chi", null, chi_value);
 
         chi_value.put("nhom_chi_tieu_id", "4");
         chi_value.put("img_nhom_chi_tieu", "4");
         chi_value.put("note", "note3");
-        chi_value.put("ngay_chi_tieu", "1900-5-09");
+        chi_value.put("ngay_chi_tieu", "2019-5-09");
         chi_value.put("so_tien_chi", "100000");
         db.insert("chi", null, chi_value);
 
         chi_value.put("nhom_chi_tieu_id", "1");
         chi_value.put("img_nhom_chi_tieu", "1");
         chi_value.put("note", "note3");
-        chi_value.put("ngay_chi_tieu", "1900-5-09");
+        chi_value.put("ngay_chi_tieu", "2019-5-09");
         chi_value.put("so_tien_chi", "100000");
         db.insert("chi", null, chi_value);
 
@@ -101,7 +102,7 @@ public class Database extends SQLiteOpenHelper {
         chi_value.put("nhom_chi_tieu_id", "1");
         chi_value.put("img_nhom_chi_tieu", "1");
         chi_value.put("note", "note3");
-        chi_value.put("ngay_chi_tieu", "1900-2-09");
+        chi_value.put("ngay_chi_tieu", "2019-2-09");
         chi_value.put("so_tien_chi", "0");
         db.insert("chi", null, chi_value);
 //thu
@@ -171,13 +172,14 @@ public class Database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String create_nhom_chi_tieu_sql = "create table nhom_chi_tieu (id integer primary key autoincrement, name text, phan_tram float, tien_con_lai float)";
         db.execSQL(create_nhom_chi_tieu_sql);
-
         String create_chi = "create table chi (id integer primary key autoincrement, nhom_chi_tieu_id integer, img_nhom_chi_tieu integer, note text, ngay_chi_tieu date, so_tien_chi float)";
         db.execSQL(create_chi);
         String create_thu = "create table thu (id integer primary key autoincrement, note text, ngay_thu date, so_tien_thu float)";
         db.execSQL(create_thu);
         String create_vi = "create table vi (id integer primary key autoincrement,so_du float, thang_nam date)";
         db.execSQL(create_vi);
+
+
     }
 
     /*
@@ -205,9 +207,6 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
-//    values.put("name", "Nhóm giải trí");
-//        values.put("phan_tram", "0.0");
-//        values.put("tien_con_lai", "0");
     public void getNhomChiTieu(ArrayList<NhomChiTieu> members){
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from nhom_chi_tieu",null);
@@ -216,6 +215,7 @@ public class Database extends SQLiteOpenHelper {
                 NhomChiTieu nct = new NhomChiTieu();
                 nct.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
                 nct.setName(cursor.getString(cursor.getColumnIndex("name")));
+                nct.setPhan_tram(cursor.getFloat(cursor.getColumnIndex("phan_tram")));
                 members.add(nct);
             }while (cursor.moveToNext());
         }
@@ -254,9 +254,11 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    public void insert_chi(Chi chi) {
     }
 }

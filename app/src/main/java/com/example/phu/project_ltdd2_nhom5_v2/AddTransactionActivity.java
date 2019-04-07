@@ -64,9 +64,9 @@ public class AddTransactionActivity extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(AddTransactionActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        txtChonNgay.setText(dayOfMonth + "/" + month + "/" + year);
+                        txtChonNgay.setText(dayOfMonth + "/" + (month+1) + "/" + year);
                     }
-                }, day, month, year);
+                }, year, month, day);
                 datePickerDialog.show();
             }
         });

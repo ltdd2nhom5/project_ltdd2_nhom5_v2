@@ -12,6 +12,7 @@ import com.example.phu.project_ltdd2_nhom5_v2.database.Database;
 public class MainActivity extends AppCompatActivity {
     Button btnThemKhoanThu, btnThemKhoanChi, btnThongKe,btnLapKeHoach;
     Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
         btnLapKeHoach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                intent = new Intent(MainActivity.this,ListPercent.class);
-//                startActivity(intent);
+                intent = new Intent(MainActivity.this,ListPercent.class);
+                startActivity(intent);
             }
         });
 
