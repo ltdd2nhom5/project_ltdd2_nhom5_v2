@@ -2,11 +2,17 @@ package com.example.phu.project_ltdd2_nhom5_v2.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.phu.project_ltdd2_nhom5_v2.model.Chi;
+import com.example.phu.project_ltdd2_nhom5_v2.model.NhomChiTieu;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Database extends SQLiteOpenHelper {
     private static String DBNAME = "quanlychitieu";
@@ -47,49 +53,56 @@ public class Database extends SQLiteOpenHelper {
         values.put("tien_con_lai", "0");
         db.insert("nhom_chi_tieu", null, values);
 
-//        chi
+//chi
         ContentValues chi_value = new ContentValues();
         chi_value.put("nhom_chi_tieu_id", "1");
+        chi_value.put("img_nhom_chi_tieu", "1");
         chi_value.put("note", "note0");
-        chi_value.put("ngay_chi_tieu", "2019-01-09");
-        chi_value.put("so_tien_chi", "0");
+        chi_value.put("ngay_chi_tieu", "1900-2-09");
+        chi_value.put("so_tien_chi", "100000");
         db.insert("chi", null, chi_value);
 
-        chi_value.put("nhom_chi_tieu_id", "1");
+        chi_value.put("nhom_chi_tieu_id", "2");
+        chi_value.put("img_nhom_chi_tieu", "2");
         chi_value.put("note", "note1");
-        chi_value.put("ngay_chi_tieu", "2019-01-09");
-        chi_value.put("so_tien_chi", "0");
+        chi_value.put("ngay_chi_tieu", "1900-3-09");
+        chi_value.put("so_tien_chi", "100000");
         db.insert("chi", null, chi_value);
 
-        chi_value.put("nhom_chi_tieu_id", "1");
+        chi_value.put("nhom_chi_tieu_id", "3");
+        chi_value.put("img_nhom_chi_tieu", "3");
         chi_value.put("note", "note2");
-        chi_value.put("ngay_chi_tieu", "2019-01-09");
-        chi_value.put("so_tien_chi", "0");
+        chi_value.put("ngay_chi_tieu", "1900-4-09");
+        chi_value.put("so_tien_chi", "100000");
+        db.insert("chi", null, chi_value);
+
+        chi_value.put("nhom_chi_tieu_id", "4");
+        chi_value.put("img_nhom_chi_tieu", "4");
+        chi_value.put("note", "note3");
+        chi_value.put("ngay_chi_tieu", "1900-5-09");
+        chi_value.put("so_tien_chi", "100000");
         db.insert("chi", null, chi_value);
 
         chi_value.put("nhom_chi_tieu_id", "1");
+        chi_value.put("img_nhom_chi_tieu", "1");
         chi_value.put("note", "note3");
-        chi_value.put("ngay_chi_tieu", "2019-01-09");
-        chi_value.put("so_tien_chi", "0");
-        db.insert("chi", null, chi_value);
-
-        chi_value.put("nhom_chi_tieu_id", "1");
-        chi_value.put("note", "note3");
-        chi_value.put("ngay_chi_tieu", "2019-01-09");
-        chi_value.put("so_tien_chi", "0");
-        db.insert("chi", null, chi_value);
-
-
-        chi_value.put("nhom_chi_tieu_id", "1");
-        chi_value.put("note", "note3");
-        chi_value.put("ngay_chi_tieu", "2019-01-09");
-        chi_value.put("so_tien_chi", "0");
+        chi_value.put("ngay_chi_tieu", "1900-5-09");
+        chi_value.put("so_tien_chi", "100000");
         db.insert("chi", null, chi_value);
 
 
         chi_value.put("nhom_chi_tieu_id", "1");
+        chi_value.put("img_nhom_chi_tieu", "1");
         chi_value.put("note", "note3");
         chi_value.put("ngay_chi_tieu", "2019-01-09");
+        chi_value.put("so_tien_chi", "100000");
+        db.insert("chi", null, chi_value);
+
+
+        chi_value.put("nhom_chi_tieu_id", "1");
+        chi_value.put("img_nhom_chi_tieu", "1");
+        chi_value.put("note", "note3");
+        chi_value.put("ngay_chi_tieu", "1900-02-09");
         chi_value.put("so_tien_chi", "0");
         db.insert("chi", null, chi_value);
 //thu
@@ -160,25 +173,64 @@ public class Database extends SQLiteOpenHelper {
         String create_nhom_chi_tieu_sql = "create table nhom_chi_tieu (id integer primary key autoincrement, name text, phan_tram float, tien_con_lai float)";
         db.execSQL(create_nhom_chi_tieu_sql);
 
-        String create_chi = "create table chi (id integer primary key autoincrement, nhom_chi_tieu_id integer, note text, ngay_chi_tieu date,so_tien_chi float)";
+        String create_chi = "create table chi (id integer primary key autoincrement, nhom_chi_tieu_id integer, img_nhom_chi_tieu integer, note text, ngay_chi_tieu date,so_tien_chi float)";
         db.execSQL(create_chi);
         String create_thu = "create table thu (id integer primary key autoincrement, note text, ngay_thu date,so_tien_thu float)";
         db.execSQL(create_thu);
         String create_vi = "create table vi (id integer primary key autoincrement,so_du float, thang_nam date)";
         db.execSQL(create_vi);
     }
+
+//    chi_value.put("nhom_chi_tieu_id", "1");
+//        chi_value.put("note", "note3");
+//        chi_value.put("ngay_chi_tieu", "2019-01-09");
+//        chi_value.put("so_tien_chi", "0");
+
+    /*
+    * Created by: Nguyen Linh Chan
+    * Date: 5/4/2019
+    * Trang thong ke chi tieu
+    * */
+
+    //Get danh sach chi tieu
+    public void getChiTieu(ArrayList<Chi> members){
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from chi",null);
+        if(cursor.moveToFirst()){
+            do {
+                Chi chi = new Chi();
+                chi.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
+                chi.setNhom_chi_tieu(cursor.getString(cursor.getColumnIndex("nhom_chi_tieu_id")));
+                chi.setImg_nhom_chi_tieu(Integer.parseInt(cursor.getString(cursor.getColumnIndex("img_nhom_chi_tieu"))));
+                chi.setGhi_chu(cursor.getString(cursor.getColumnIndex("note")));
+                chi.setSo_tien_chi(Float.parseFloat(cursor.getString(cursor.getColumnIndex("so_tien_chi"))));
+                chi.setNgay_chi_tieu(cursor.getString(cursor.getColumnIndex("ngay_chi_tieu")));
+                members.add(chi);
+            }while (cursor.moveToNext());
+        }
+        db.close();
+    }
+
+//    values.put("name", "Nhóm giải trí");
+//        values.put("phan_tram", "0.0");
+//        values.put("tien_con_lai", "0");
+    public void getNhomChiTieu(ArrayList<NhomChiTieu> members){
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from nhom_chi_tieu",null);
+        if(cursor.moveToFirst()){
+            do {
+                NhomChiTieu nct = new NhomChiTieu();
+                nct.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
+                nct.setName(cursor.getString(cursor.getColumnIndex("name")));
+                members.add(nct);
+            }while (cursor.moveToNext());
+        }
+        db.close();
+    }
+
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-    }
-
-    public void insert_chi(Chi chi){
-        SQLiteDatabase db = getWritableDatabase();
-        ContentValues chi_value = new ContentValues();
-        chi_value.put("nhom_chi_tieu_id", chi.getNhom_chi_tieu());
-        chi_value.put("note", chi.getGhi_chu());
-//        chi_value.put("ngay_chi_tieu", chi.getNgay_chi_tieu().toString());
-        chi_value.put("so_tien_chi", chi.getSo_tien_chi());
-        db.insert("chi", null, chi_value);
     }
 }

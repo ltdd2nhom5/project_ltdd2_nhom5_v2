@@ -5,26 +5,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.example.phu.project_ltdd2_nhom5_v2.database.Database;
 
 
 public class MainActivity extends AppCompatActivity {
     Button btnThemKhoanThu, btnThemKhoanChi, btnThongKe,btnLapKeHoach;
-
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Database db = new Database(this);
 
         btnThemKhoanChi = (Button)findViewById(R.id.btnThemKhoanChi);
         btnThemKhoanThu = (Button)findViewById(R.id.btnThemKhoanThu);
         btnThongKe = (Button)findViewById(R.id.btnThongKe);
         btnLapKeHoach = (Button)findViewById(R.id.btnLapKeHoach);
-
 
         btnThemKhoanChi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         btnThongKe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Database db = new Database(MainActivity.this);
+                db.insert_du_lieu_mau();
                 intent = new Intent(MainActivity.this,SpendStatisticsActivity.class);
                 startActivity(intent);
             }

@@ -121,7 +121,7 @@
                 android:id="@+id/txtOutMoney"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="200,000 đ"
+                android:text="0 đ"
                 android:textColor="@color/red"
                 android:layout_alignParentRight="true"
                 android:layout_alignBaseline="@id/txtOutputMoney"/>
@@ -149,11 +149,54 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:paddingTop="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chọn ngày để xem giao dịch"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/dateChoose"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/calenda"/>
+            <TextView
+                android:id="@+id/txtDateChoose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""/>
+            <Button
+                android:id="@+id/viewTKCT"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:text="Xem"
+                android:background="@drawable/border_radius"
+                />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/nullTKCT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/white"
-        android:layout_marginTop="25dp"
         android:padding="20dp">
-
         <ListView
             android:id="@+id/listItem"
             android:layout_width="match_parent"

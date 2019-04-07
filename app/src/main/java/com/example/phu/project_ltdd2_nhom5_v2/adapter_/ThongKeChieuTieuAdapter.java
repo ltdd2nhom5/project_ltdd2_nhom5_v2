@@ -11,7 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.phu.project_ltdd2_nhom5_v2.R;
+import com.example.phu.project_ltdd2_nhom5_v2.database.Database;
 import com.example.phu.project_ltdd2_nhom5_v2.model.Chi;
+import com.example.phu.project_ltdd2_nhom5_v2.model.NhomChiTieu;
 
 import java.util.ArrayList;
 
@@ -42,10 +44,22 @@ public class ThongKeChieuTieuAdapter extends ArrayAdapter<Chi> {
         ImageView imageView = (ImageView) view.findViewById(R.id.img);
 
         txtName.setText(tkct.getNhom_chi_tieu());
-        txtMoney.setText(tkct.getSo_tien_chi() + "");
+        txtMoney.setText("-"+ tkct.getSo_tien_chi() + "");
         txtNote.setText(tkct.getGhi_chu());
         txtNgayChi.setText(tkct.getNgay_chi_tieu() + "");
-        //imageView.setImageResource(imageId[position]);
+
+        if(tkct.getImg_nhom_chi_tieu() == 1){
+            imageView.setBackground(context.getResources().getDrawable(R.drawable.move));
+        }
+        else if(tkct.getImg_nhom_chi_tieu() == 2){
+            imageView.setBackground(context.getResources().getDrawable(R.drawable.glass));
+        }
+        else if (tkct.getImg_nhom_chi_tieu() == 3){
+            imageView.setBackground(context.getResources().getDrawable(R.drawable.shopping));
+        }
+        else {
+            imageView.setBackground(context.getResources().getDrawable(R.drawable.game));
+        }
 
         return view;
     }
