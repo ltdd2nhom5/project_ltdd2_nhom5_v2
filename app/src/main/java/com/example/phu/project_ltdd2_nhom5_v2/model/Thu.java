@@ -3,6 +3,20 @@ package com.example.phu.project_ltdd2_nhom5_v2.model;
 import java.util.Date;
 
 public class Thu {
+
+    public Thu(){
+
+    }
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private String ghi_chu;
     private Date ngay_thu;
     private float so_tien_thu;
