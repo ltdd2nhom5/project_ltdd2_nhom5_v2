@@ -64,9 +64,9 @@ public class AddTransactionActivity extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(AddTransactionActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        txtChonNgay.setText(dayOfMonth + "/" + month + "/" + year);
+                        txtChonNgay.setText(dayOfMonth + "/" + (month+1) + "/" + year);
                     }
-                }, day, month, year);
+                }, year, month, day);
                 datePickerDialog.show();
             }
         });
@@ -242,7 +242,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                 chi.setSo_tien_chi(Float.parseFloat(edtMoney.getText().toString()));
                 chi.setGhi_chu(edtNote.getText().toString());
                 Database db = new Database(this);
-                db.insert_chi(chi);
+//                db.insert_chi(chi);
                 Toast.makeText(this, "da them", Toast.LENGTH_SHORT).show();
                 break;
             default:
