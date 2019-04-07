@@ -242,7 +242,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                 chi.setSo_tien_chi(Float.parseFloat(edtMoney.getText().toString()));
                 chi.setGhi_chu(edtNote.getText().toString());
                 Database db = new Database(this);
-                db.insert_chi(chi);
+//                db.insert_chi(chi);
                 Toast.makeText(this, "da them", Toast.LENGTH_SHORT).show();
                 break;
             default:
