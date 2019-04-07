@@ -59,35 +59,35 @@ public class Database extends SQLiteOpenHelper {
         chi_value.put("nhom_chi_tieu_id", "1");
         chi_value.put("img_nhom_chi_tieu", "1");
         chi_value.put("note", "note0");
-        chi_value.put("ngay_chi_tieu", "1900-2-09");
+        chi_value.put("ngay_chi_tieu", "2019-2-09");
         chi_value.put("so_tien_chi", "100000");
         db.insert("chi", null, chi_value);
 
         chi_value.put("nhom_chi_tieu_id", "2");
         chi_value.put("img_nhom_chi_tieu", "2");
         chi_value.put("note", "note1");
-        chi_value.put("ngay_chi_tieu", "1900-3-09");
+        chi_value.put("ngay_chi_tieu", "2019-3-09");
         chi_value.put("so_tien_chi", "100000");
         db.insert("chi", null, chi_value);
 
         chi_value.put("nhom_chi_tieu_id", "3");
         chi_value.put("img_nhom_chi_tieu", "3");
         chi_value.put("note", "note2");
-        chi_value.put("ngay_chi_tieu", "1900-4-09");
+        chi_value.put("ngay_chi_tieu", "2019-4-09");
         chi_value.put("so_tien_chi", "100000");
         db.insert("chi", null, chi_value);
 
         chi_value.put("nhom_chi_tieu_id", "4");
         chi_value.put("img_nhom_chi_tieu", "4");
         chi_value.put("note", "note3");
-        chi_value.put("ngay_chi_tieu", "1900-5-09");
+        chi_value.put("ngay_chi_tieu", "2019-5-09");
         chi_value.put("so_tien_chi", "100000");
         db.insert("chi", null, chi_value);
 
         chi_value.put("nhom_chi_tieu_id", "1");
         chi_value.put("img_nhom_chi_tieu", "1");
         chi_value.put("note", "note3");
-        chi_value.put("ngay_chi_tieu", "1900-5-09");
+        chi_value.put("ngay_chi_tieu", "2019-5-09");
         chi_value.put("so_tien_chi", "100000");
         db.insert("chi", null, chi_value);
 
@@ -103,7 +103,7 @@ public class Database extends SQLiteOpenHelper {
         chi_value.put("nhom_chi_tieu_id", "1");
         chi_value.put("img_nhom_chi_tieu", "1");
         chi_value.put("note", "note3");
-        chi_value.put("ngay_chi_tieu", "1900-02-09");
+        chi_value.put("ngay_chi_tieu", "2019-02-09");
         chi_value.put("so_tien_chi", "0");
         db.insert("chi", null, chi_value);
 //thu

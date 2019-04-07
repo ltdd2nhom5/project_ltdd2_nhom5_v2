@@ -83,19 +83,19 @@ public class SpendStatisticsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 c = Calendar.getInstance();
-//                int day = c.get(Calendar.DAY_OF_MONTH);
-//                int month = c.get(Calendar.MONTH);
-//                int year = c.get(Calendar.YEAR);
-                Date date = new Date();
-                int day = date.getDay();
-                int month = date.getMonth();
-                int year = date.getYear();
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                int month = c.get(Calendar.MONTH);
+                int year = c.get(Calendar.YEAR);
+//                Date date = new Date();
+//                int day = date.getDay();
+//                int month = date.getMonth();
+//                int year = date.getYear();
                 datePickerDialog = new DatePickerDialog(SpendStatisticsActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         txtDateChoose.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
                     }
-                }, day, month, year);
+                }, year, month, day);
                 datePickerDialog.show();
             }
         });
