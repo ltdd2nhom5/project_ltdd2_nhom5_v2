@@ -25,6 +25,7 @@ import com.example.phu.project_ltdd2_nhom5_v2.model.NhomChiTieu;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class SpendStatisticsActivity extends AppCompatActivity {
     Button btnViewTKCT;
@@ -85,12 +86,16 @@ public class SpendStatisticsActivity extends AppCompatActivity {
 //                int day = c.get(Calendar.DAY_OF_MONTH);
 //                int month = c.get(Calendar.MONTH);
 //                int year = c.get(Calendar.YEAR);
+                Date date = new Date();
+                int day = date.getDay();
+                int month = date.getMonth();
+                int year = date.getYear();
                 datePickerDialog = new DatePickerDialog(SpendStatisticsActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         txtDateChoose.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
                     }
-                }, day_, month_, year_);
+                }, day, month, year);
                 datePickerDialog.show();
             }
         });
