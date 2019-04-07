@@ -3,10 +3,10 @@ package com.example.phu.project_ltdd2_nhom5_v2.model;
 import java.util.Date;
 
 public class Chi {
-    private String nhom_chi_tieu;
-    private String ghi_chu;
+    private String nhom_chi_tieu = "";
+    private String ghi_chu ="";
     private Date ngay_chi_tieu;
-    private float so_tien_chi;
+    private float so_tien_chi=0;
 
     public Chi(String nhom_chi_tieu, String ghi_chu, Date ngay_chi_tieu, float so_tien_chi) {
         this.nhom_chi_tieu = nhom_chi_tieu;
@@ -14,7 +14,8 @@ public class Chi {
         this.ngay_chi_tieu = ngay_chi_tieu;
         this.so_tien_chi = so_tien_chi;
     }
-
+    public Chi() {
+    }
     public void setNhom_chi_tieu(String nhom_chi_tieu) {
         this.nhom_chi_tieu = nhom_chi_tieu;
     }

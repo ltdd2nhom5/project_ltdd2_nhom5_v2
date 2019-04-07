@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.phu.project_ltdd2_nhom5_v2.model.Chi;
+
 public class Database extends SQLiteOpenHelper {
     private static String DBNAME = "quanlychitieu";
     private static int VERSION = 1;
@@ -165,11 +167,18 @@ public class Database extends SQLiteOpenHelper {
         String create_vi = "create table vi (id integer primary key autoincrement,so_du float, thang_nam date)";
         db.execSQL(create_vi);
     }
-
-
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    public void insert_chi(Chi chi){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues chi_value = new ContentValues();
+        chi_value.put("nhom_chi_tieu_id", chi.getNhom_chi_tieu());
+        chi_value.put("note", chi.getGhi_chu());
+//        chi_value.put("ngay_chi_tieu", chi.getNgay_chi_tieu().toString());
+        chi_value.put("so_tien_chi", chi.getSo_tien_chi());
+        db.insert("chi", null, chi_value);
     }
 }

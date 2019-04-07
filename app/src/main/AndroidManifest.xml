@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.phu.project_ltdd2_nhom5_v2">
 
     <application
+        tools:replace="android:icon"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,6 +21,7 @@
         <activity android:name=".AddTransactionActivity"></activity>
         <activity android:name=".ThemKhoanThuActivity"></activity>
         <activity android:name=".SpendStatisticsActivity"></activity>
+
         <activity android:name=".ListPercent"></activity>
     </application>
 

@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:baselineAligned="false"
     tools:context=".AddTransactionActivity">
 
     <TextView
@@ -19,10 +21,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:layout_width="100px"
-            android:layout_height="100px"
+            android:layout_width="@dimen/icon_size_small"
+            android:layout_height="@dimen/icon_size_small"
             android:src="@drawable/money_out" />
         <EditText
+            android:textSize="@dimen/text_size_small"
+            android:id="@+id/edtMoney"
             android:textColor="#13b11b"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,16 +41,16 @@
 
         <ImageView
 
-            android:layout_width="100px"
-            android:layout_height="100px"
+            android:layout_width="@dimen/icon_size_small"
+            android:layout_height="@dimen/icon_size_small"
             android:src="@drawable/mark" />
 
         <Spinner
+        android:id="@+id/spinNhomChi"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:background="@drawable/spinner_background"
-
             android:entries="@array/nhom_giao_dich_arr">
 
         </Spinner>
@@ -60,11 +64,13 @@
 
         <ImageView
 
-            android:layout_width="100px"
-            android:layout_height="100px"
+            android:layout_width="@dimen/icon_size_small"
+            android:layout_height="@dimen/icon_size_small"
             android:src="@drawable/note" />
 
         <EditText
+            android:textSize="@dimen/text_size_small"
+            android:id="@+id/edtNote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập ghi chú" />
@@ -77,16 +83,55 @@
         android:orientation="horizontal">
 
         <ImageView
-
-            android:layout_width="100px"
-            android:layout_height="100px"
+            android:id="@+id/imvDate"
+            android:layout_width="@dimen/icon_size_small"
+            android:layout_height="@dimen/icon_size_small"
             android:src="@drawable/calenda" />
 
         <TextView
+            android:textSize="@dimen/text_size_small"
             android:id="@+id/txtChonNgay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Chọn ngày" />
+    </LinearLayout>
+
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/btnSave"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        fancy:fb_textFont="30sp"
+        fancy:fb_borderColor="#FFFFFF"
+        fancy:fb_borderWidth="1dp"
+        fancy:fb_defaultColor="#7ab800"
+        fancy:fb_focusColor="#5c7ede"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="30dp"
+        fancy:fb_text="SHUFFLE PLAY"
+        fancy:fb_textColor="#FFFFFF"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="match_parent">
+        <com.nightonke.boommenu.BoomMenuButton
+
+            android:layout_gravity="bottom"
+            android:id="@+id/bmb"
+            app:bmb_buttonEnum="simpleCircle"
+            app:bmb_piecePlaceEnum="piecePlace_dot_6_3"
+            app:bmb_buttonPlaceEnum="buttonPlace_sc_6_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
     </LinearLayout>
 
 
