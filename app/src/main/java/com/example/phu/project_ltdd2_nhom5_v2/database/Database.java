@@ -5,10 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
+import com.example.phu.project_ltdd2_nhom5_v2.R;
 import com.example.phu.project_ltdd2_nhom5_v2.model.Chi;
 import com.example.phu.project_ltdd2_nhom5_v2.model.NhomChiTieu;
+import com.example.phu.project_ltdd2_nhom5_v2.model.Thu;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -172,13 +173,14 @@ public class Database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String create_nhom_chi_tieu_sql = "create table nhom_chi_tieu (id integer primary key autoincrement, name text, phan_tram float, tien_con_lai float)";
         db.execSQL(create_nhom_chi_tieu_sql);
-
         String create_chi = "create table chi (id integer primary key autoincrement, nhom_chi_tieu_id integer, img_nhom_chi_tieu integer, note text, ngay_chi_tieu date,so_tien_chi float)";
         db.execSQL(create_chi);
         String create_thu = "create table thu (id integer primary key autoincrement, note text, ngay_thu date,so_tien_thu float)";
         db.execSQL(create_thu);
         String create_vi = "create table vi (id integer primary key autoincrement,so_du float, thang_nam date)";
         db.execSQL(create_vi);
+
+
     }
 
 //    chi_value.put("nhom_chi_tieu_id", "1");
@@ -222,15 +224,17 @@ public class Database extends SQLiteOpenHelper {
                 NhomChiTieu nct = new NhomChiTieu();
                 nct.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
                 nct.setName(cursor.getString(cursor.getColumnIndex("name")));
+                nct.setPhan_tram(cursor.getFloat(cursor.getColumnIndex("phan_tram")));
                 members.add(nct);
             }while (cursor.moveToNext());
         }
         db.close();
     }
-
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    public void insert_chi(Chi chi) {
     }
 }

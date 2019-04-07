@@ -21,7 +21,6 @@
         <activity android:name=".AddTransactionActivity"></activity>
         <activity android:name=".ThemKhoanThuActivity"></activity>
         <activity android:name=".SpendStatisticsActivity"></activity>
-
         <activity android:name=".ListPercent"></activity>
     </application>
 
