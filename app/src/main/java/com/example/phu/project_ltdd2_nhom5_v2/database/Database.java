@@ -230,6 +230,23 @@ public class Database extends SQLiteOpenHelper {
         }
         db.close();
     }
+
+    public ArrayList<NhomChiTieu> getAll_NCT(){
+        ArrayList<NhomChiTieu> members = new ArrayList<NhomChiTieu>();
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from nhom_chi_tieu",null);
+        if(cursor.moveToFirst()){
+            do {
+                NhomChiTieu nct = new NhomChiTieu();
+                nct.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
+                nct.setName(cursor.getString(cursor.getColumnIndex("name")));
+                nct.setPhan_tram(cursor.getFloat(cursor.getColumnIndex("phan_tram")));
+                members.add(nct);
+            }while (cursor.moveToNext());
+        }
+        db.close();
+        return members;
+    }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 

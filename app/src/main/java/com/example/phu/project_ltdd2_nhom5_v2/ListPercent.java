@@ -27,20 +27,21 @@ public class ListPercent extends AppCompatActivity {
         setContentView(R.layout.lap_ke_hoach_layout);
 
         ListView list = (ListView) findViewById(R.id.my_list_view);
-        DAO.getNhomChiTieu(NCT);
+        //DAO.getNhomChiTieu(NCT);
 
-//        ArrayList<NhomChiTieu> listNCT = new ArrayList<NhomChiTieu>();
-//        for (int i = 0; i < NCT.size(); i++) {
-//            NhomChiTieu nhomChiTieu = new NhomChiTieu();
-//
-//            nhomChiTieu.setId(NCT.get(i).getId());
-//            nhomChiTieu.setName(NCT.get(i).getName());
-//            nhomChiTieu.setPhan_tram(NCT.get(i).getPhan_tram());
-//
-//            listNCT.add(nhomChiTieu);
-//        }
+        NCT = DAO.getAll_NCT();
+        ArrayList<NhomChiTieu> listNCT = new ArrayList<NhomChiTieu>();
+        for (int i = 0; i < NCT.size(); i++) {
+            NhomChiTieu nhomChiTieu = new NhomChiTieu();
 
-        adapter = new KeHoachChiTieu (ListPercent.this, R.layout.card_layout, NCT);
+            nhomChiTieu.setId(NCT.get(i).getId());
+            nhomChiTieu.setName(NCT.get(i).getName());
+            nhomChiTieu.setPhan_tram(NCT.get(i).getPhan_tram());
+
+            listNCT.add(nhomChiTieu);
+        }
+
+        adapter = new KeHoachChiTieu (ListPercent.this, R.layout.card_layout, listNCT);
         list.setAdapter(adapter);
 
     }
