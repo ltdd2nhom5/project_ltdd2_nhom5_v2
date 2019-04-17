@@ -10,7 +10,7 @@ import com.example.phu.project_ltdd2_nhom5_v2.database.Database;
 
 
 public class MainActivity extends AppCompatActivity {
-    Button btnThemKhoanThu, btnThemKhoanChi, btnThongKe,btnLapKeHoach;
+    Button btnThemKhoanThu, btnThemKhoanChi, btnThongKe,btnLapKeHoach,btnThemDuLieu;
     Intent intent;
 
     @Override
@@ -22,7 +22,14 @@ public class MainActivity extends AppCompatActivity {
         btnThemKhoanThu = (Button)findViewById(R.id.btnThemKhoanThu);
         btnThongKe = (Button)findViewById(R.id.btnThongKe);
         btnLapKeHoach = (Button)findViewById(R.id.btnLapKeHoach);
-
+        btnThemDuLieu = (Button)findViewById(R.id.btnThemDuLieu);
+        btnThemDuLieu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Database db = new Database(MainActivity.this);
+                db.insert_du_lieu_mau();
+            }
+        });
         btnThemKhoanChi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
         btnThongKe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Database db = new Database(MainActivity.this);
-                db.insert_du_lieu_mau();
+
+
                 intent = new Intent(MainActivity.this,SpendStatisticsActivity.class);
                 startActivity(intent);
             }

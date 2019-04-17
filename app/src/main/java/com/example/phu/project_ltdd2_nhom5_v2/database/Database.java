@@ -168,6 +168,17 @@ public class Database extends SQLiteOpenHelper {
         db.insert("vi", null, vi_values);
         db.close();
     }
+    public void insertChi(Chi chi){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues chi_value = new ContentValues();
+        chi_value.put("nhom_chi_tieu_id", "1");
+        chi_value.put("img_nhom_chi_tieu", "1");
+        chi_value.put("note", chi.getGhi_chu());
+        chi_value.put("ngay_chi_tieu", chi.getNgay_chi_tieu());
+        chi_value.put("so_tien_chi", chi.getSo_tien_chi());
+        db.insert("chi", null, chi_value);
+        db.close();
+    }
     @Override
     public void onCreate(SQLiteDatabase db) {
         String create_nhom_chi_tieu_sql = "create table nhom_chi_tieu (id integer primary key autoincrement, name text, phan_tram float, tien_con_lai float)";

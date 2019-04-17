@@ -1,6 +1,8 @@
 package com.example.phu.project_ltdd2_nhom5_v2;
 
 import android.app.DatePickerDialog;
+import android.content.ContentValues;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -64,7 +66,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(AddTransactionActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        txtChonNgay.setText(dayOfMonth + "/" + (month+1) + "/" + year);
+                        txtChonNgay.setText(year + "-" + (month+1) + "-" + dayOfMonth);
                     }
                 }, year, month, day);
                 datePickerDialog.show();
@@ -78,9 +80,9 @@ public class AddTransactionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String money_str = edtMoney.getText() + "";
-                String date_str = txtChonNgay.getText() + "";
+                final String date_str = txtChonNgay.getText() + "";
                 String nhom_chi = spinNhomChi.getSelectedItem().toString();
-
+                final String note = edtNote.getText()+"";
                 if (money_str.equals("")) {
                     YoYo.with(Techniques.Tada)
                             .duration(500)
@@ -135,7 +137,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                     }, 1000);
                 }
                 else {
-                    float money = Float.parseFloat(money_str);
+                    final float money = Float.parseFloat(money_str);
                     if (money > 50000) {
                         new SweetAlertDialog(v.getContext(), SweetAlertDialog.WARNING_TYPE)
                                 .setTitleText("Cảnh báo")
@@ -150,6 +152,12 @@ public class AddTransactionActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                                         sweetAlertDialog.cancel();
+                                        Chi chi = new Chi();
+                                        chi.setSo_tien_chi(money);
+                                        chi.setGhi_chu(note);
+                                        chi.setNgay_chi_tieu(date_str);
+                                        Database db = new Database(AddTransactionActivity.this);
+                                        db.insertChi(chi);
                                         new SweetAlertDialog(AddTransactionActivity.this, SweetAlertDialog.SUCCESS_TYPE)
                                                 .setTitleText("Thông báo")
                                                 .setContentText("Bạn đã thêm 1 giao dịch")
@@ -218,6 +226,22 @@ public class AddTransactionActivity extends AppCompatActivity {
                                     edtMoney.setText("");
                                     edtNote.setText("");
                                     Toast.makeText(AddTransactionActivity.this, "save", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case MAN_HINH_LAP_KE_HOACH:
+                                    Intent intent = new Intent(AddTransactionActivity.this,CustomListPercent.class);
+                                    startActivity(intent);
+                                    break;
+                                case MAN_HINH_THONG_KE:
+                                    Intent intent2 = new Intent(AddTransactionActivity.this,SpendStatisticsActivity.class);
+                                    startActivity(intent2);
+                                    break;
+                                case MAN_HINH_THU:
+                                    Intent intent3 = new Intent(AddTransactionActivity.this,ThemKhoanThuActivity.class);
+                                    startActivity(intent3);
+                                    break;
+                                case XEM_TIEN_CHI_TRONG_THANG_NAY:
+                                    Toast.makeText(AddTransactionActivity.this, "Xem tong chi thang nay", Toast.LENGTH_SHORT).show();
+                                    break;
                             }
                             Toast.makeText(AddTransactionActivity.this, "Clicked " + index, Toast.LENGTH_SHORT).show();
                         }
@@ -228,8 +252,8 @@ public class AddTransactionActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_them_giao_dich, menu);
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.menu_them_giao_dich, menu);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -238,12 +262,9 @@ public class AddTransactionActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuSaveChi:
-                Chi chi = new Chi();
-                chi.setSo_tien_chi(Float.parseFloat(edtMoney.getText().toString()));
-                chi.setGhi_chu(edtNote.getText().toString());
-                Database db = new Database(this);
+
 //                db.insert_chi(chi);
-                Toast.makeText(this, "da them", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "da them", Toast.LENGTH_SHORT).show();
                 break;
             default:
 
