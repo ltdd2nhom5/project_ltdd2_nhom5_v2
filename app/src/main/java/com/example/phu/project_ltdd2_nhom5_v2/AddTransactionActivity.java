@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -22,10 +25,12 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.phu.project_ltdd2_nhom5_v2.database.Database;
 import com.example.phu.project_ltdd2_nhom5_v2.model.Chi;
+import com.example.phu.project_ltdd2_nhom5_v2.model.NhomChiTieu;
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
 import com.nightonke.boommenu.BoomButtons.SimpleCircleButton;
 import com.nightonke.boommenu.BoomMenuButton;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -33,13 +38,14 @@ import mehdi.sakout.fancybuttons.FancyButton;
 
 public class AddTransactionActivity extends AppCompatActivity {
     TextView txtChonNgay;
-
+    Spinner spinNhomChi;
     ImageView imgDate;
     DatePickerDialog datePickerDialog;
     Calendar c;
     EditText edtMoney, edtNote;
     FancyButton btnSave;
-    Spinner spinNhomChi;
+
+    ArrayList<NhomChiTieu> nhomChiTieu_list;
     BoomMenuButton bmb;
     final int XEM_TIEN_CHI_TRONG_THANG_NAY = 0;
     final int MAN_HINH_THU = 1;
@@ -47,6 +53,12 @@ public class AddTransactionActivity extends AppCompatActivity {
     final int RESET = 3;
     final int MAN_HINH_LAP_KE_HOACH = 4;
     final int MAN_HINH_THONG_KE = 5;
+
+    ArrayList<Integer> id_list = new ArrayList<>();
+    ArrayList<String> tenNhomChiTieu_list = new ArrayList<>();
+
+    int nhomChiTieuId_selected;
+    String tenNhomChiTieu_selected;
 
 
     @Override
@@ -56,6 +68,33 @@ public class AddTransactionActivity extends AppCompatActivity {
         spinNhomChi = (Spinner) findViewById(R.id.spinNhomChi);
         txtChonNgay = (TextView) findViewById(R.id.txtChonNgay);
         imgDate = (ImageView) findViewById(R.id.imvDate);
+        // setup spinner
+        spinNhomChi = (Spinner)findViewById(R.id.spinNhomChi);
+        Database db = new Database(this);
+        nhomChiTieu_list = new ArrayList<>();
+        db.getNhomChiTieu(nhomChiTieu_list);
+        for (NhomChiTieu nct:nhomChiTieu_list){
+            id_list.add(nct.getId());
+            tenNhomChiTieu_list.add(nct.getName());
+        }
+        String names[] = {"A","B","C"};
+        Log.d("__test","kich thuoc: "+nhomChiTieu_list.size());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.spinner_nhomchitieu_item,tenNhomChiTieu_list);
+        spinNhomChi.setAdapter(adapter);
+        spinNhomChi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                nhomChiTieuId_selected = id_list.get(position);
+                tenNhomChiTieu_selected = tenNhomChiTieu_list.get(position);
+                Toast.makeText(AddTransactionActivity.this, "id:"+nhomChiTieuId_selected + " - ten: " + tenNhomChiTieu_selected , Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+//
         txtChonNgay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,6 +195,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                                         chi.setSo_tien_chi(money);
                                         chi.setGhi_chu(note);
                                         chi.setNgay_chi_tieu(date_str);
+                                        chi.setNhom_chi_tieu(nhomChiTieuId_selected+"");
                                         Database db = new Database(AddTransactionActivity.this);
                                         db.insertChi(chi);
                                         new SweetAlertDialog(AddTransactionActivity.this, SweetAlertDialog.SUCCESS_TYPE)
