@@ -44,7 +44,7 @@ public class AddTransactionActivity extends AppCompatActivity {
     Calendar c;
     EditText edtMoney, edtNote;
     FancyButton btnSave;
-
+    float so_tien_cho_phep;
     ArrayList<NhomChiTieu> nhomChiTieu_list;
     BoomMenuButton bmb;
     final int XEM_TIEN_CHI_TRONG_THANG_NAY = 0;
@@ -59,7 +59,7 @@ public class AddTransactionActivity extends AppCompatActivity {
 
     int nhomChiTieuId_selected;
     String tenNhomChiTieu_selected;
-
+    NhomChiTieu nhomChiTieu_selected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +86,7 @@ public class AddTransactionActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 nhomChiTieuId_selected = id_list.get(position);
                 tenNhomChiTieu_selected = tenNhomChiTieu_list.get(position);
+                nhomChiTieu_selected = nhomChiTieu_list.get(position);
                 Toast.makeText(AddTransactionActivity.this, "id:"+nhomChiTieuId_selected + " - ten: " + tenNhomChiTieu_selected , Toast.LENGTH_SHORT).show();
             }
 
@@ -177,10 +178,12 @@ public class AddTransactionActivity extends AppCompatActivity {
                 }
                 else {
                     final float money = Float.parseFloat(money_str);
-                    if (money > 50000) {
+                     so_tien_cho_phep = 50000;
+                    so_tien_cho_phep = nhomChiTieu_selected.getTien_tieu_con_lai();
+                    if (money > so_tien_cho_phep) {
                         new SweetAlertDialog(v.getContext(), SweetAlertDialog.WARNING_TYPE)
                                 .setTitleText("Cảnh báo")
-                                .setContentText("Bạn đã chi quá số tiền trong kế hoạch")
+                                .setContentText("Bạn đã chi quá số tiền trong kế hoạch. " + "Bạn chỉ còn " + so_tien_cho_phep + " cho nhóm chi tiêu này !!!")
 
                                 .show();
                     } else {
@@ -198,6 +201,9 @@ public class AddTransactionActivity extends AppCompatActivity {
                                         chi.setNhom_chi_tieu(nhomChiTieuId_selected+"");
                                         Database db = new Database(AddTransactionActivity.this);
                                         db.insertChi(chi);
+                                        so_tien_cho_phep -= money;
+                                        nhomChiTieu_selected.setTien_tieu_con_lai(so_tien_cho_phep);
+                                        db.update_nhom_chi_tieu(nhomChiTieu_selected);
                                         new SweetAlertDialog(AddTransactionActivity.this, SweetAlertDialog.SUCCESS_TYPE)
                                                 .setTitleText("Thông báo")
                                                 .setContentText("Bạn đã thêm 1 giao dịch")

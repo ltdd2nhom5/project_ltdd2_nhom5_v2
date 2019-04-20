@@ -29,28 +29,38 @@ public class Database extends SQLiteOpenHelper {
 
         super(context, DBNAME, null, VERSION);
     }
+    public void update_nhom_chi_tieu(NhomChiTieu nct){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", nct.getName());
+        values.put("phan_tram", nct.getPhan_tram());
+        values.put("tien_con_lai", nct.getTien_tieu_con_lai());
+        db.update("nhom_chi_tieu", values, "id="+nct.getId(), null);
+        db.close();
+    }
     public void insert_du_lieu_mau(){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        //nhom
         values.put("name", "Nhóm di chuyển");
         values.put("phan_tram", "0.0");
-        values.put("tien_con_lai", "0");
+        values.put("tien_con_lai", 50000);
         db.insert("nhom_chi_tieu", null, values);
 
         values.put("name", "Nhóm ăn uống");
         values.put("phan_tram", "0.0");
-        values.put("tien_con_lai", "0");
+        values.put("tien_con_lai", 100000);
         db.insert("nhom_chi_tieu", null, values);
 
         values.put("name", "Nhóm mua sắm");
         values.put("phan_tram", "0.0");
-        values.put("tien_con_lai", "0");
+        values.put("tien_con_lai", 150000);
         db.insert("nhom_chi_tieu", null, values);
 
         values.put("name", "Nhóm giải trí");
         values.put("phan_tram", "0.0");
-        values.put("tien_con_lai", "0");
+        values.put("tien_con_lai", 200000);
         db.insert("nhom_chi_tieu", null, values);
 
 //chi
@@ -228,6 +238,8 @@ public class Database extends SQLiteOpenHelper {
                 nct.setName(cursor.getString(cursor.getColumnIndex("name")));
                 nct.setPhan_tram(cursor.getFloat(cursor.getColumnIndex("phan_tram")));
                 members.add(nct);
+                nct.setTien_tieu_con_lai(cursor.getFloat(cursor.getColumnIndex("tien_con_lai")));
+                members.add(nct);
             }while (cursor.moveToNext());
         }
         db.close();
@@ -270,6 +282,14 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
-    public void insert_chi(Chi chi) {
+
+    public void insertThu(Thu thu) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues thu_value = new ContentValues();
+        thu_value.put("note", thu.getGhi_chu());
+        thu_value.put("ngay_thu", thu.getNgay_thu());
+        thu_value.put("so_tien_thu", thu.getSo_tien_thu());
+        db.insert("thu", null, thu_value);
+        db.close();
     }
 }
