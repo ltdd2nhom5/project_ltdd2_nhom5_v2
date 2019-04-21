@@ -10,9 +10,9 @@
     tools:context=".AddTransactionActivity">
 
     <TextView
-        android:text="THÊM GIAO DỊCH"
-        android:textSize="@dimen/text_size_large"
-        android:textColor="#146407"
+        android:text="THÊM KHOẢN CHI"
+        android:textSize="@dimen/text_size_medium"
+        android:textColor="@color/theme_color_green"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -107,7 +107,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="10dp"
-        fancy:fb_textFont="30sp"
+        fancy:fb_textFont="@dimen/text_size_small"
         fancy:fb_borderColor="#FFFFFF"
         fancy:fb_borderWidth="1dp"
         fancy:fb_defaultColor="#7ab800"

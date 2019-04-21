@@ -5,34 +5,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/theme_color_green"
+    android:gravity="center"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MÀN HÌNH CHÍNH"
+        android:paddingHorizontal="30px"
+        android:text="ỨNG DỤNG QUẢN LÝ THU CHI"
+        android:textColor="#fff"
+        android:textSize="@dimen/text_size_medium"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:src="@drawable/money_in"
+        android:layout_width="300px"
+        android:layout_height="300px" />
     <Button
+        android:layout_marginTop="20px"
         android:id="@+id/btnThemKhoanThu"
         android:text="Thêm khoản thu"
-        android:layout_width="wrap_content"
+        android:background="@color/blue"
+        android:textColor="#fff"
+        android:layout_width="@dimen/btn_width"
         android:layout_height="wrap_content" />
     <Button
         android:id="@+id/btnThemKhoanChi"
         android:text="Thêm khoản chi"
-        android:layout_width="wrap_content"
+        android:background="@color/blue"
+        android:layout_marginTop="20px"
+        android:textColor="#fff"
+        android:layout_width="@dimen/btn_width"
         android:layout_height="wrap_content" />
     <Button
         android:id="@+id/btnThongKe"
         android:text="Thông kê thu chi"
-        android:layout_width="wrap_content"
+        android:background="@color/blue"
+        android:layout_marginTop="20px"
+        android:textColor="#fff"
+        android:layout_width="@dimen/btn_width"
         android:layout_height="wrap_content" />
     <Button
         android:id="@+id/btnLapKeHoach"
         android:text="Lập kế hoạch"
-        android:layout_width="wrap_content"
+        android:background="@color/blue"
+        android:layout_marginTop="20px"
+        android:textColor="#fff"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btnThemDuLieu"
+        android:text="insert dữ liệu mẫu"
+        android:background="@color/blue"
+        android:layout_marginTop="20px"
+        android:textColor="#fff"
+        android:layout_width="@dimen/btn_width"
         android:layout_height="wrap_content" />
 </LinearLayout>
