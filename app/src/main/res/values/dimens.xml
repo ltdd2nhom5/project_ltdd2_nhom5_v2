@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_size_small">25sp</dimen>
+    <dimen name="text_size_small">20sp</dimen>
+    <dimen name="text_size_medium">35sp</dimen>
     <dimen name="text_size_large">45sp</dimen>
     <dimen name="icon_size_small">150px</dimen>
+    <dimen name="btn_width">500px</dimen>
 </resources>
