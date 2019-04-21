@@ -129,7 +129,7 @@ public class ListPercent extends AppCompatActivity {
                                     total -= percent;
                                     new SweetAlertDialog(ListPercent.this, SweetAlertDialog.WARNING_TYPE)
                                             .setTitleText("Cảnh báo")
-                                            .setContentText("Số phầm trăm vượt quá 100% !!!" + total)
+                                            .setContentText("Số phầm trăm vượt quá 100% !!!")
                                             .show();
                                 } else {
 
@@ -141,7 +141,7 @@ public class ListPercent extends AppCompatActivity {
                                     img_NCT.setImageResource(R.drawable.ic_launcher);
                                     new SweetAlertDialog(ListPercent.this, SweetAlertDialog.SUCCESS_TYPE)
                                             .setTitleText("Thông báo")
-                                            .setContentText("Bạn đã cập nhật lại phần trăm chi tiêu" + total)
+                                            .setContentText("Bạn đã cập nhật lại phần trăm chi tiêu")
                                             .show();
                                 }
                             }
