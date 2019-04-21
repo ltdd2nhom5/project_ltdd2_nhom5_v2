@@ -44,22 +44,22 @@ public class Database extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         //nhom
         values.put("name", "Nhóm di chuyển");
-        values.put("phan_tram", "0.0");
+        values.put("phan_tram", "25");
         values.put("tien_con_lai", 50000);
         db.insert("nhom_chi_tieu", null, values);
 
         values.put("name", "Nhóm ăn uống");
-        values.put("phan_tram", "0.0");
+        values.put("phan_tram", "25");
         values.put("tien_con_lai", 100000);
         db.insert("nhom_chi_tieu", null, values);
 
         values.put("name", "Nhóm mua sắm");
-        values.put("phan_tram", "0.0");
+        values.put("phan_tram", "25");
         values.put("tien_con_lai", 150000);
         db.insert("nhom_chi_tieu", null, values);
 
         values.put("name", "Nhóm giải trí");
-        values.put("phan_tram", "0.0");
+        values.put("phan_tram", "25");
         values.put("tien_con_lai", 200000);
         db.insert("nhom_chi_tieu", null, values);
 
@@ -237,7 +237,6 @@ public class Database extends SQLiteOpenHelper {
                 nct.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
                 nct.setName(cursor.getString(cursor.getColumnIndex("name")));
                 nct.setPhan_tram(cursor.getFloat(cursor.getColumnIndex("phan_tram")));
-                members.add(nct);
                 nct.setTien_tieu_con_lai(cursor.getFloat(cursor.getColumnIndex("tien_con_lai")));
                 members.add(nct);
             }while (cursor.moveToNext());
