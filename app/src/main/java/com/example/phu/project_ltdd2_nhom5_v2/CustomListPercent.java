@@ -32,10 +32,11 @@ public class CustomListPercent extends ArrayAdapter<String> {
         View rowView= inflater.inflate(R.layout.card_layout, null, true);
 
         TextView txtName = (TextView) rowView.findViewById(R.id.txtName);
-        EditText edtPercent = (EditText) rowView.findViewById(R.id.edtPercent);
+        TextView txtPercent = (TextView) rowView.findViewById(R.id.txtPercent);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.imgView);
+
         txtName.setText(name[position]);
-        edtPercent.setText(percent[position] + "");
+        txtPercent.setText(percent[position] + "");
         imageView.setImageResource(imageId[position]);
 
         return rowView;

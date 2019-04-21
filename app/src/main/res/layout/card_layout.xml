@@ -9,7 +9,7 @@
         <LinearLayout
             android:id="@+id/item"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -17,9 +17,9 @@
                 android:id="@+id/imgView"
                 android:tag="image_tag"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:background="@drawable/ic_launcher"/>
+                android:src="@drawable/ic_launcher"/>
 
             <TextView
                 android:id="@+id/txtName"
@@ -30,9 +30,10 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
 
 
-            <EditText
-                android:id="@+id/edtPercent"
-                android:hint="Nhập"
+            <TextView
+                android:id="@+id/txtPercent"
+                android:textSize="15dp"
+                android:text="Nhập"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"

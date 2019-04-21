@@ -3,26 +3,96 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:orientation="vertical"
     android:background="@color/grey">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/main_green_color"
+        android:textColor="@color/blue"
         android:gravity="center"
         android:textSize="25dp"
         android:text="Phần trăm chi tiêu"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:hint="Tổng số phầm trăm:"
+            android:textSize="15dp"
+            android:textColorHint="@color/red"
+            />
+        <TextView
+            android:id="@+id/txtTotalPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100%"
+            android:textSize="15dp"
+            android:textColor="@color/red"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/img_NCT"
+            android:tag="image_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/txtName_NCT"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:text="Tên nhóm chi tiêu"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <EditText
+            android:id="@+id/edtPercent_NCT"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="%"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7">
+        android:layout_weight="4"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:background="@color/red"
+            android:textColor="@color/white"
+            android:text="Danh sách nhóm chi tiêu"/>
         <ListView
             android:id="@+id/my_list_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
         </ListView>
     </LinearLayout>
