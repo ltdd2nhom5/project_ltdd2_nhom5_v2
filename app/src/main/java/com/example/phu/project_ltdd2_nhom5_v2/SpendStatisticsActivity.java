@@ -195,6 +195,8 @@ public class SpendStatisticsActivity extends AppCompatActivity {
                         txtMoneyOfMonth.setText((double)(fTotalThu + fSoDu - totalChi) + "");
                         nullTCKT.setTextColor(getResources().getColor(R.color.red));
                         nullTCKT.setText("Không có tiền chi trong tháng " + month + "!");
+                        adapter = new ThongKeChieuTieuAdapter (SpendStatisticsActivity.this, R.layout.list_item_layout, listTKCT);
+                        list.setAdapter(adapter);
                     }
                     txtMoneyOfMonth.setText((double)(fTotalThu + fSoDu - totalChi) + "");
                 }
