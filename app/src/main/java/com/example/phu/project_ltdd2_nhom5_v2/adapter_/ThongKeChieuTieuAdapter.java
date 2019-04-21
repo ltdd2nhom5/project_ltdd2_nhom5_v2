@@ -36,7 +36,6 @@ public class ThongKeChieuTieuAdapter extends ArrayAdapter<Chi> {
         view = inflater.inflate(layoutID, parent, false);
         Chi tkct = listTKCT.get(position);
 
-
         TextView txtName = (TextView) view.findViewById(R.id.lblName);
         TextView txtMoney = (TextView) view.findViewById(R.id.money);
         TextView txtNote = (TextView) view.findViewById(R.id.note);

@@ -91,7 +91,7 @@
                 android:id="@+id/txtIntMoney"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1,000,000 đ"
+                android:text="0 đ"
                 android:textColor="@color/blue"
                 android:layout_alignParentRight="true"
                 android:layout_alignBaseline="@id/txtInputMoney"/>
@@ -106,7 +106,7 @@
                 android:id="@+id/txtIntMoney1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1,000,000 đ"
+                android:text="0 đ"
                 android:textColor="@color/blue"
                 android:layout_alignParentRight="true"
                 android:layout_alignBaseline="@id/txtInputMoney1"/>
@@ -138,7 +138,7 @@
                 android:id="@+id/txtTotalMoney"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1,800,000 đ"
+                android:text="0 đ"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:layout_alignParentRight="true"

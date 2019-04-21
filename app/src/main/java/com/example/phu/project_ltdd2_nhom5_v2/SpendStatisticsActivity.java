@@ -4,13 +4,13 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.format.DateFormat;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,8 +21,9 @@ import com.example.phu.project_ltdd2_nhom5_v2.adapter_.ThongKeChieuTieuAdapter;
 import com.example.phu.project_ltdd2_nhom5_v2.database.Database;
 import com.example.phu.project_ltdd2_nhom5_v2.model.Chi;
 import com.example.phu.project_ltdd2_nhom5_v2.model.NhomChiTieu;
+import com.example.phu.project_ltdd2_nhom5_v2.model.Thu;
+import com.example.phu.project_ltdd2_nhom5_v2.model.ViTien;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -35,10 +36,12 @@ public class SpendStatisticsActivity extends AppCompatActivity {
     ImageButton img;
     Calendar c;
     DatePickerDialog datePickerDialog;
-    TextView txtDateChoose, nullTCKT, txtOutMoney;
+    TextView txtDateChoose, nullTCKT, txtOutMoney, txtInput, txtMoneyFirst, txtMoneyOfMonth;
 
     public ArrayList<Chi> listCT = new ArrayList<Chi>();
     public ArrayList<NhomChiTieu> listNCT = new ArrayList<NhomChiTieu>();
+    public ArrayList<Thu> listKT = new ArrayList<Thu>();
+    public ArrayList<ViTien> listVT = new ArrayList<ViTien>();
     public ThongKeChieuTieuAdapter adapter;
     public Database DAO = new Database(this);
 
@@ -54,20 +57,22 @@ public class SpendStatisticsActivity extends AppCompatActivity {
         list = (ListView) findViewById(R.id.listItem);
         nullTCKT = (TextView) findViewById(R.id.nullTKCT);
         txtOutMoney = (TextView) findViewById(R.id.txtOutMoney);
+        txtInput = (TextView) findViewById(R.id.txtIntMoney1);
+        txtMoneyFirst = (TextView) findViewById(R.id.txtIntMoney);
+        txtMoneyOfMonth = (TextView) findViewById(R.id.txtTotalMoney);
 
-
-        Time time = new Time();
-        time.setToNow();
-        final int day_ = time.monthDay;
-        final int month_ = time.month;
-        final int year_ = time.year;
-        String date = year_ + "/" + month_ + "/" + day_;
-        txtDateChoose.setText(date);
+//        Time time = new Time();
+//        time.setToNow();
+//        final int day_ = time.monthDay;
+//        final int month_ = time.month;
+//        final int year_ = time.year;
+//        String date = year_ + "/" + month_ + "/" + day_;
+//        txtDateChoose.setText(date);
 
         DAO.getChiTieu(listCT);
         DAO.getNhomChiTieu(listNCT);
-
-
+        DAO.getThu(listKT);
+        DAO.getVi(listVT);
 
 
         viewStatistic.setOnClickListener(new View.OnClickListener() {
@@ -82,20 +87,17 @@ public class SpendStatisticsActivity extends AppCompatActivity {
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 c = Calendar.getInstance();
-//                int day = c.get(Calendar.DAY_OF_MONTH);
-//                int month = c.get(Calendar.MONTH);
-//                int year = c.get(Calendar.YEAR);
-                Date date = new Date();
-                int day = date.getDay();
-                int month = date.getMonth();
-                int year = date.getYear();
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                int month = c.get(Calendar.MONTH);
+                int year = c.get(Calendar.YEAR);
                 datePickerDialog = new DatePickerDialog(SpendStatisticsActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        txtDateChoose.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                        txtDateChoose.setText(dayOfMonth + "/" + (month+1) + "/" + year);
                     }
-                }, day, month, year);
+                }, year, month, day);
                 datePickerDialog.show();
             }
         });
@@ -108,6 +110,7 @@ public class SpendStatisticsActivity extends AppCompatActivity {
                     nullTCKT.setTextColor(getResources().getColor(R.color.red));
                     nullTCKT.setText("Vui lòng chọn ngày trước khi xem!");
                     txtOutMoney.setText("0 đ");
+                    txtInput.setText("0 đ");
                     Toast.makeText(SpendStatisticsActivity.this,
                             "Vui lòng chọn ngày trước khi xem!"
                             , Toast.LENGTH_SHORT).show();
@@ -115,11 +118,11 @@ public class SpendStatisticsActivity extends AppCompatActivity {
                 else {
                     nullTCKT.setText("");
                     String[] arrDate = txtDateChoose.getText().toString().split("/");
-                    String day = arrDate[0];
                     String month = arrDate[1];
                     String year = arrDate[2];
 
                     ArrayList<Chi> listTKCT = new ArrayList<Chi>();
+
                     for (int i = 0; i < listCT.size(); i++) {
                         String[] arrDateCT = listCT.get(i).getNgay_chi_tieu().split("-");
                         if (month.equalsIgnoreCase(arrDateCT[1]) && year.equalsIgnoreCase(arrDateCT[0]))
@@ -140,9 +143,44 @@ public class SpendStatisticsActivity extends AppCompatActivity {
                             }
                         }
                     }
+                    float fSoDu = 0.0f;
+                    int nDemSoDu = 0;
+                    for (int i = 0; i < listVT.size(); i++)
+                    {
+                        String[] arrDateCT = listVT.get(i).getThang().split("-");
+                        if(Integer.parseInt(arrDateCT[0]) <= Integer.parseInt(year))
+                        {
+                            if(Integer.parseInt(arrDateCT[1]) <= Integer.parseInt(month))
+                            {
+                                fSoDu += listVT.get(i).getSo_du();
+                                nDemSoDu++;
+                            }
+                        }
+                    }
+                    if(nDemSoDu == 0)
+                    {
+                        txtMoneyFirst.setText("0 đ");
+                    }else {
+                        txtMoneyFirst.setText(fSoDu + " đ");
+                    }
+                    float fTotalThu = 0.0f;
+                    int nDemThu = 0;
+                    for (int i = 0; i < listKT.size(); i++){
+                        String[] arrDateCT = listKT.get(i).getNgay_thu().split("-");
+                        if (month.equalsIgnoreCase(arrDateCT[1]) && year.equalsIgnoreCase(arrDateCT[0])) {
+                            fTotalThu += listKT.get(i).getSo_tien_thu();
+                            nDemThu++;
+                        }
+                    }
+                    if(nDemThu == 0) {
+                        txtInput.setText("0 đ");
+                    }
+                    else {
+                        txtInput.setText(fTotalThu + " đ");
+                    }
+                    float totalChi = 0.0f;
                     if(listTKCT.size() != 0)
                     {
-                        float totalChi = 0.0f;
                         for(int i = 0; i < listTKCT.size(); i++)
                         {
                             totalChi += listTKCT.get(i).getSo_tien_chi();
@@ -154,18 +192,44 @@ public class SpendStatisticsActivity extends AppCompatActivity {
                     }
                     else {
                         txtOutMoney.setText("0 đ");
+                        txtMoneyOfMonth.setText((double)(fTotalThu + fSoDu - totalChi) + "");
                         nullTCKT.setTextColor(getResources().getColor(R.color.red));
                         nullTCKT.setText("Không có tiền chi trong tháng " + month + "!");
+                        adapter = new ThongKeChieuTieuAdapter (SpendStatisticsActivity.this, R.layout.list_item_layout, listTKCT);
+                        list.setAdapter(adapter);
                     }
+                    txtMoneyOfMonth.setText((double)(fTotalThu + fSoDu - totalChi) + "");
                 }
             }
         });
     }
-}
 
-//        list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Toast.makeText(SpendStatisticsActivity.this, "You Clicked at " +name[+ position], Toast.LENGTH_SHORT).show();
-//            }
-//        });
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_back, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.home:
+                Intent intent = new Intent(SpendStatisticsActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+                break;
+            case R.id.add_transaction:
+                Intent intent1 = new Intent(SpendStatisticsActivity.this, AddTransactionActivity.class);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent1);
+            case R.id.add_thu:
+                Intent intent2 = new Intent(SpendStatisticsActivity.this, ThemKhoanThuActivity.class);
+                intent2.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent2);
+            default:
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
