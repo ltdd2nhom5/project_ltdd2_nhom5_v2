@@ -247,7 +247,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                     icon = R.drawable.refresh2;
                     break;
                 case XEM_TIEN_CHI_TRONG_THANG_NAY:
-                    icon = R.drawable.money_out;
+                    icon = R.drawable.money;
                     break;
                 case MAN_HINH_THONG_KE:
                     icon = R.drawable.chart;
@@ -274,7 +274,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                                     Toast.makeText(AddTransactionActivity.this, "save", Toast.LENGTH_SHORT).show();
                                     break;
                                 case MAN_HINH_LAP_KE_HOACH:
-                                    Intent intent = new Intent(AddTransactionActivity.this,CustomListPercent.class);
+                                    Intent intent = new Intent(AddTransactionActivity.this,ListPercent.class);
                                     startActivity(intent);
                                     break;
                                 case MAN_HINH_THONG_KE:
@@ -286,10 +286,10 @@ public class AddTransactionActivity extends AppCompatActivity {
                                     startActivity(intent3);
                                     break;
                                 case XEM_TIEN_CHI_TRONG_THANG_NAY:
-                                    Toast.makeText(AddTransactionActivity.this, "Xem tong chi thang nay", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(AddTransactionActivity.this, "Tổng tiền thu trong tháng này: 20000đ", Toast.LENGTH_SHORT).show();
                                     break;
                             }
-                            Toast.makeText(AddTransactionActivity.this, "Clicked " + index, Toast.LENGTH_SHORT).show();
+
                         }
                     });
             bmb.addBuilder(builder);

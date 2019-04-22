@@ -189,7 +189,7 @@ public class ThemKhoanThuActivity extends AppCompatActivity {
                     icon = R.drawable.refresh2;
                     break;
                 case XEM_TIEN_CHI_TRONG_THANG_NAY:
-                    icon = R.drawable.money_out;
+                    icon = R.drawable.money;
                     break;
                 case MAN_HINH_THONG_KE:
                     icon = R.drawable.chart;
@@ -216,7 +216,7 @@ public class ThemKhoanThuActivity extends AppCompatActivity {
                                     Toast.makeText(ThemKhoanThuActivity.this, "save", Toast.LENGTH_SHORT).show();
                                     break;
                                 case MAN_HINH_LAP_KE_HOACH:
-                                    Intent intent = new Intent(ThemKhoanThuActivity.this, CustomListPercent.class);
+                                    Intent intent = new Intent(ThemKhoanThuActivity.this, ListPercent.class);
                                     startActivity(intent);
                                     break;
                                 case MAN_HINH_THONG_KE:
@@ -228,7 +228,7 @@ public class ThemKhoanThuActivity extends AppCompatActivity {
                                     startActivity(intent3);
                                     break;
                                 case XEM_TIEN_CHI_TRONG_THANG_NAY:
-                                    Toast.makeText(ThemKhoanThuActivity.this, "Xem tong chi thang nay", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ThemKhoanThuActivity.this, "Tổng tiền thu trong tháng này: 50000đ", Toast.LENGTH_SHORT).show();
                                     break;
                             }
                             Toast.makeText(ThemKhoanThuActivity.this, "Clicked " + index, Toast.LENGTH_SHORT).show();
