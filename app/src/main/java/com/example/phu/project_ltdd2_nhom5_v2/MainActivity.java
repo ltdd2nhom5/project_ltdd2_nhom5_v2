@@ -14,6 +14,8 @@ import com.example.phu.project_ltdd2_nhom5_v2.model.NhomChiTieu;
 
 import java.util.ArrayList;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 
 public class MainActivity extends AppCompatActivity {
     Button btnThemKhoanThu, btnThemKhoanChi, btnThongKe,btnLapKeHoach,btnThemDuLieu;
@@ -37,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Database db = new Database(MainActivity.this);
                 db.insert_du_lieu_mau();
+                new SweetAlertDialog(MainActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Thông báo")
+                        .setContentText("Dữ liệu mẫu đã được thêm.")
+                        .show();
             }
         });
         btnThemKhoanChi.setOnClickListener(new View.OnClickListener() {
@@ -57,8 +63,6 @@ public class MainActivity extends AppCompatActivity {
         btnThongKe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 intent = new Intent(MainActivity.this,SpendStatisticsActivity.class);
                 startActivity(intent);
             }

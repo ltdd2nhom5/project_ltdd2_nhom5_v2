@@ -38,25 +38,24 @@ public class KeHoachChiTieu extends ArrayAdapter<NhomChiTieu> {
         view = inflater.inflate(layoutID, parent, false);
         NhomChiTieu nct = listNCT.get(position);
 
-
         TextView txtName = (TextView) view.findViewById(R.id.txtName);
-        EditText edtPercent = (EditText) view.findViewById(R.id.edtPercent);
+        TextView txtPercent = (TextView) view.findViewById(R.id.txtPercent);
         ImageView imageView = (ImageView) view.findViewById(R.id.imgView);
 
         txtName.setText(nct.getName());
-        edtPercent.setText(nct.getPhan_tram() + "");
+        txtPercent.setText(nct.getPhan_tram() + "");
 
         if(nct.getId() == 1){
-            imageView.setBackground(context.getResources().getDrawable(R.drawable.move));
+            imageView.setImageResource(R.drawable.move);
         }
         else if(nct.getId() == 2){
-            imageView.setBackground(context.getResources().getDrawable(R.drawable.glass));
+            imageView.setImageResource(R.drawable.glass);
         }
         else if (nct.getId() == 3){
-            imageView.setBackground(context.getResources().getDrawable(R.drawable.shopping));
+            imageView.setImageResource(R.drawable.shopping);
         }
         else {
-            imageView.setBackground(context.getResources().getDrawable(R.drawable.game));
+            imageView.setImageResource(R.drawable.game);
         }
 
         return view;
