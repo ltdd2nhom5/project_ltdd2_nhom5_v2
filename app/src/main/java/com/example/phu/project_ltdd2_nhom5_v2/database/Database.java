@@ -181,8 +181,8 @@ public class Database extends SQLiteOpenHelper {
     public void insertChi(Chi chi){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues chi_value = new ContentValues();
-        chi_value.put("nhom_chi_tieu_id", "1");
-        chi_value.put("img_nhom_chi_tieu", "1");
+        chi_value.put("nhom_chi_tieu_id", chi.getNhom_chi_tieu());
+        chi_value.put("img_nhom_chi_tieu", chi.getNhom_chi_tieu());
         chi_value.put("note", chi.getGhi_chu());
         chi_value.put("ngay_chi_tieu", chi.getNgay_chi_tieu());
         chi_value.put("so_tien_chi", chi.getSo_tien_chi());

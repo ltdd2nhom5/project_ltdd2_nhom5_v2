@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class SpendStatisticsActivity extends AppCompatActivity {
     Button btnViewTKCT;
     RelativeLayout viewStatistic;
@@ -111,9 +113,11 @@ public class SpendStatisticsActivity extends AppCompatActivity {
                     nullTCKT.setText("Vui lòng chọn ngày trước khi xem!");
                     txtOutMoney.setText("0 đ");
                     txtInput.setText("0 đ");
-                    Toast.makeText(SpendStatisticsActivity.this,
-                            "Vui lòng chọn ngày trước khi xem!"
-                            , Toast.LENGTH_SHORT).show();
+
+                    new SweetAlertDialog(SpendStatisticsActivity.this, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Cảnh báo")
+                            .setContentText("Vui lòng chọn ngày trước khi xem!")
+                            .show();
                 }
                 else {
                     nullTCKT.setText("");
@@ -195,6 +199,10 @@ public class SpendStatisticsActivity extends AppCompatActivity {
                         txtMoneyOfMonth.setText((double)(fTotalThu + fSoDu - totalChi) + "");
                         nullTCKT.setTextColor(getResources().getColor(R.color.red));
                         nullTCKT.setText("Không có tiền chi trong tháng " + month + "!");
+                        new SweetAlertDialog(SpendStatisticsActivity.this, SweetAlertDialog.WARNING_TYPE)
+                                .setTitleText("Cảnh báo")
+                                .setContentText("Không có tiền chi trong tháng " + month + "!")
+                                .show();
                         adapter = new ThongKeChieuTieuAdapter (SpendStatisticsActivity.this, R.layout.list_item_layout, listTKCT);
                         list.setAdapter(adapter);
                     }

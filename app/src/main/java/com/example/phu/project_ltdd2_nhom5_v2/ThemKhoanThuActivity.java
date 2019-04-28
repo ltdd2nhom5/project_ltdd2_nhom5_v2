@@ -231,7 +231,7 @@ public class ThemKhoanThuActivity extends AppCompatActivity {
                                     Toast.makeText(ThemKhoanThuActivity.this, "Tổng tiền thu trong tháng này: 50000đ", Toast.LENGTH_SHORT).show();
                                     break;
                             }
-                            Toast.makeText(ThemKhoanThuActivity.this, "Clicked " + index, Toast.LENGTH_SHORT).show();
+
                         }
                     });
             bmb.addBuilder(builder);
